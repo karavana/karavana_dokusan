@@ -196,18 +196,7 @@ class NakedTriplet(Technique):
 
 class LockedCandidate(Technique):
     def _find(self) -> Iterator[Combination]:
-        for group in self.sudoku.groups():
-            candidate_map: Dict[int, List[Cell]] = {}
-            for cell in group:
-                if cell.candidates:
-                    for candidate in cell.candidates:
-                        candidate_map.setdefault(candidate, []).append(cell)
-
-            for candidate, cells in candidate_map.items():
-                if len(cells) == 2:
-                    yield Combination(
-                        name="Locked Candidate", cells=cells, values=[candidate]
-                    )
+        pass
 
     def _get_changes(self, combination: Combination) -> List[Cell]:
         eliminated = set(combination.values)
